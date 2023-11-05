@@ -20,13 +20,15 @@ Next.js 12(pages router) / TS / react-query
 
 - 최초 http 통신과 주기적으로 들어오는 Websocket 통신 혼합
 - uc는 app으로 app은 'hvac(공조기)', 'Light(조명)', 'nutrient(양액)' 등으로 확장 고려
-- 이를 위한 useControlWebsocket, useMonitorWebsocket
+- 이를 위한 useControlWebsocket, useMonitorWebsocket 커스텀훅
+- 이를 위한 Table, input 다형성 컴포넌트와 다양한 디자인 패턴들 활용
 - 독립적인 서비스를 보여드리기 위해 일부 MSW 포함
 
 ## 실행
 
 ```bash
-yarn & yarn dev
+yarn
+yarn dev
 ```
 
 ## 비고
