@@ -27,6 +27,7 @@ Next.js 12(pages router) / TS / react-query
 ## 실행
 
 ```bash
+cd Control
 yarn
 yarn dev
 ```
