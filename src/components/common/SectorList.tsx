@@ -13,15 +13,15 @@ import useRequiredQuery from '@src/hooks/useRequiredQuery';
 
 export default function SectorList() {
   const [currentSector, setCurrentSector] = useAtom(currentSectorAtom);
-  const { site, app } = useRequiredQuery();
-  const sectors = filteredSectors({ site, app });
+  const { site } = useRequiredQuery();
+  const sectors = filteredSectors({ site });
 
   useEffect(() => {
     if (currentSector === '') {
-      const initialSector = getDefaultSector({ site, app });
+      const initialSector = getDefaultSector({ site });
       setCurrentSector(initialSector);
     }
-  }, [site, app, currentSector, setCurrentSector]);
+  }, [site, currentSector, setCurrentSector]);
 
   return (
     <ListLayout>

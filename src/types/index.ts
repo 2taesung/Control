@@ -38,7 +38,7 @@ export type {
 
 export type {
   WsParams,
-  WsParamsWithoutSector,
+  WsParamsWithSiteOnly,
   WsParamsWithAppOnly,
 } from './wsParams';
 
@@ -49,4 +49,4 @@ export type {
   ScheduleItemT,
 } from './schedule';
 
-export type { Sites, SiteAuthorityT, SiteData } from './site';
+export type { Sites, SiteData } from './site';

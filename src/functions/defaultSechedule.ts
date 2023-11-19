@@ -5,16 +5,6 @@ type ScheduleParams = {
   fields: string[];
 };
 
-// type Schedule = {
-//   id: number;
-//   enable: boolean;
-//   startHour: number;
-//   startMin: number;
-//   temp?: number;
-//   hum?: number;
-//   status?: boolean;
-// };
-
 function createSchedule({ id, fields }: ScheduleParams) {
   const schedule: ScheduleItemT = {
     id,

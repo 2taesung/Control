@@ -1,8 +1,8 @@
-import { WsParamsWithoutSector } from '@src/types';
+import { WsParamsWithSiteOnly } from '@src/types';
 
 import filteredSectors from './filteredSectors';
 
-export const getDefaultSector = ({ app, site }: WsParamsWithoutSector) => {
-  const sector = filteredSectors({ site, app })[0];
+export const getDefaultSector = ({ site }: WsParamsWithSiteOnly) => {
+  const sector = filteredSectors({ site })[0];
   return sector;
 };
