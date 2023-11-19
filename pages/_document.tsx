@@ -12,13 +12,7 @@ export default class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <link rel="manifest" href="/manifest.json" />
-          <link
-            href="images/favicons/favicon.ico"
-            rel="icon"
-            type="image/x-icon"
-            sizes="32x32"
-          />
+          <link href="" rel="icon" type="image/x-icon" sizes="32x32" />
           <link rel="apple-touch-icon" href="images/icons/icon-192x192.png" />
           <meta name="msapplication-TileColor" content="#FF98BA" />
         </Head>
