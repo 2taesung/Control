@@ -18,7 +18,7 @@ const isWebSocketOpen = (wsInstance: WebSocket) =>
   wsInstance && wsInstance.readyState === WebSocket.OPEN;
 
 export const useControlWebSocket = ({ app, site, sector }: WsParams) => {
-  sector = sector || getDefaultSector({ app, site });
+  sector = sector || getDefaultSector({ site });
 
   const isMounted = useRef(true);
   const retryCount = useRef(0);
