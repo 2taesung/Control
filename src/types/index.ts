@@ -38,6 +38,7 @@ export type {
 
 export type {
   WsParams,
+  WsParamsWithoutSector,
   WsParamsWithSiteOnly,
   WsParamsWithAppOnly,
 } from './wsParams';

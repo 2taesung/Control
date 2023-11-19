@@ -7,8 +7,7 @@ export type WsParams = {
   sector: string;
 };
 
-export type WsParamsWithSiteOnly = Pick<WsParams, 'site'>;
-
+export type WsParamsWithoutSector = Omit<WsParams, 'sector'>;
 export type WsParamsWithoutApp = Omit<WsParams, 'app'>;
-
+export type WsParamsWithSiteOnly = Pick<WsParams, 'site'>;
 export type WsParamsWithAppOnly = Pick<WsParams, 'app'>;
