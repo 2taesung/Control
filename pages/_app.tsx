@@ -32,6 +32,7 @@ type AppPropsWithLayout = AppProps & {
 initServer();
 
 export default function App({ Component, pageProps }: AppPropsWithLayout) {
+  console.count('App rendering:');
   const [queryClient] = useState(
     () =>
       new QueryClient({
