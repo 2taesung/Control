@@ -2,8 +2,8 @@ import { http, HttpResponse } from 'msw';
 
 import {
   scheduleData,
-  efScheduleData,
   humScheduleData,
+  efScheduleData,
   instanceData,
   humInstanceData,
   efInstanceData,
@@ -11,26 +11,57 @@ import {
 
 const baseUrl = process.env.NEXT_PUBLIC_API_URL;
 
-/**
- * api 스펙 swagger 참조
- * */
 export const handlers = [
-  http.get(`${baseUrl}/uc/device/schedule?site=md&sector=a`, () => {
-    return HttpResponse.json(scheduleData);
+  http.get(`${baseUrl}/:app/device/schedule`, req => {
+    const { app } = req.params;
+    const url = new URL(req.request.url);
+    const site = url.searchParams.get('site');
+    const sector = url.searchParams.get('sector');
+
+    let data;
+    switch (app) {
+      case 'uc':
+        data = { ...scheduleData, site, sector };
+        break;
+      case 'hum':
+        data = { ...humScheduleData, site, sector };
+        break;
+      case 'ef':
+        data = { ...efScheduleData, site, sector };
+        break;
+      default:
+        return new HttpResponse(null, {
+          status: 404,
+          statusText: 'app not found',
+        });
+    }
+
+    return HttpResponse.json(data);
   }),
-  http.get(`${baseUrl}/hum/device/schedule?site=md&sector=a`, () => {
-    return HttpResponse.json(humScheduleData);
-  }),
-  http.get(`${baseUrl}/ef/device/schedule?site=md&sector=a`, () => {
-    return HttpResponse.json(efScheduleData);
-  }),
-  http.get(`${baseUrl}/uc/device/machine?site=md&sector=a`, () => {
-    return HttpResponse.json(instanceData);
-  }),
-  http.get(`${baseUrl}/hum/device/machine?site=md&sector=a`, () => {
-    return HttpResponse.json(humInstanceData);
-  }),
-  http.get(`${baseUrl}/ef/device/machine?site=md&sector=a`, () => {
-    return HttpResponse.json(efInstanceData);
+  http.get(`${baseUrl}/:app/device/machine`, req => {
+    const { app } = req.params;
+    const url = new URL(req.request.url);
+    const site = url.searchParams.get('site');
+    const sector = url.searchParams.get('sector');
+
+    let data;
+    switch (app) {
+      case 'uc':
+        data = { ...instanceData, site, sector };
+        break;
+      case 'hum':
+        data = { ...humInstanceData, site, sector };
+        break;
+      case 'ef':
+        data = { ...efInstanceData, site, sector };
+        break;
+      default:
+        return new HttpResponse(null, {
+          status: 404,
+          statusText: 'app not found',
+        });
+    }
+
+    return HttpResponse.json(data);
   }),
 ];

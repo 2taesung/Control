@@ -27,7 +27,9 @@ export function MonitorLayout({ children }: MonitorLayoutProps) {
 const Layout = styled.div<baseFlexT & whT>`
   ${baseFlex}
   ${wh}
+
   flex-direction: column;
+
   max-width: 100vw;
   max-height: 100vh;
   padding: 40px;
