@@ -49,6 +49,7 @@ export default function Table({
   isApply,
   setNewSchedule,
 }: TableProps) {
+  //REVIEW - 이런 부분들을 어떻게 SSR로 효율적으로 처리할 수 는 없을지.
   const getTableHeads = ({ schedules, isApply }: TableHeadParams) => {
     if (!schedules?.length) return [];
 
@@ -85,21 +86,29 @@ export default function Table({
                   <Row.Cell value={id}>
                     <span>{!id ? 'default' : id}</span>
                   </Row.Cell>
-                  <Row.Cell value={enable}>
+                  <Row.Cell value={Boolean(enable) ?? null}>
                     <CellInput
                       type="enable"
                       inputType="checkbox"
                       isHidden={!id}
                     />
                   </Row.Cell>
-                  <Row.Cell value={startHour}>
+                  <Row.Cell
+                    value={
+                      Number.isNaN(Number(startHour)) ? null : Number(startHour)
+                    }
+                  >
                     <CellInput
                       type="startHour"
                       inputType="number"
                       isHidden={!id}
                     />
                   </Row.Cell>
-                  <Row.Cell value={startMin}>
+                  <Row.Cell
+                    value={
+                      Number.isNaN(Number(startMin)) ? null : Number(startMin)
+                    }
+                  >
                     <CellInput
                       type="startMin"
                       inputType="number"

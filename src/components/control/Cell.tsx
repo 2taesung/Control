@@ -1,7 +1,7 @@
 import { ReactNode, createContext } from 'react';
 
 type CellProps = {
-  value: number | boolean | undefined;
+  value: number | boolean | undefined | null;
   children: ReactNode;
 };
 
