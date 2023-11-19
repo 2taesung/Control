@@ -1,8 +1,15 @@
 import { useEffect, useState } from 'react';
 
-export default function useApplyIndex({ schedules, isApply }) {
-  const [nowTime, setNowTime] = useState(null);
+import { ScheduleItemT } from '@src/types';
 
+export default function useApplyIndex({
+  schedules,
+  isApply,
+}: {
+  schedules: ScheduleItemT[];
+  isApply: boolean;
+}) {
+  const [nowTime, setNowTime] = useState<Date | null>(null);
   const updateTime = () => {
     const now = new Date();
     setNowTime(now);
@@ -16,7 +23,6 @@ export default function useApplyIndex({ schedules, isApply }) {
 
   setInterval(updateTime, 30000);
 
-  if (!schedules) return 0;
   if (isApply) {
     const [hour, min] = [
       Number(nowTime?.getHours()),
