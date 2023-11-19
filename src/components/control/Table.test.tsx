@@ -7,11 +7,12 @@ import Table from './Table';
 
 describe('Table component', () => {
   it('renders correctly with schedules and apply mode', () => {
-    const schedules = testSchedules;
+    const schedules = [...testSchedules];
     const setNewSchedule = jest.fn();
 
     render(
       <Table
+        app="uc"
         schedules={schedules}
         isApply={true}
         setNewSchedule={setNewSchedule}
@@ -32,10 +33,6 @@ describe('Table component', () => {
       expect(startHourElements.length).toBeGreaterThan(0);
       const startMinElements = screen.queryAllByDisplayValue(schedule.startMin);
       expect(startMinElements.length).toBeGreaterThan(0);
-      const startTempElements = screen.queryAllByDisplayValue(schedule.temp);
-      expect(startTempElements.length).toBeGreaterThan(0);
-      const startHumElements = screen.queryAllByDisplayValue(schedule.hum);
-      expect(startHumElements.length).toBeGreaterThan(0);
     });
   });
 
@@ -43,7 +40,12 @@ describe('Table component', () => {
     const setNewSchedule = jest.fn();
 
     render(
-      <Table schedules={[]} isApply={false} setNewSchedule={setNewSchedule} />,
+      <Table
+        app="uc"
+        schedules={[]}
+        isApply={false}
+        setNewSchedule={setNewSchedule}
+      />,
     );
 
     expect(screen.queryByText('classId')).not.toBeInTheDocument();
