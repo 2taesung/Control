@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-import { Apps, ScheduleDataT, WsParams } from '@src/types';
+import { Apps, WsParams } from '@src/types';
+import { PostScheduleDataParamDataT } from '@src/types/schedule';
 
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -12,7 +13,7 @@ export const getScheduleData = async ({ app, site, sector }: WsParams) => {
 
 type PostScheduleDataParam = {
   app: Apps;
-  data: ScheduleDataT;
+  data: PostScheduleDataParamDataT;
 };
 
 export const postScheduleData = async ({

@@ -1,8 +1,13 @@
-import { ScheduleT } from '@src/types';
+import { ScheduleItemT, ScheduleT } from '@src/types';
+
+type UniqueTimeEntries = {
+  [key: string]: ScheduleItemT;
+};
 
 export const filteredDuplicateTime = (schedule: ScheduleT) => {
+  if (!Array.isArray(schedule)) return [];
   // Create an empty object to store unique time entries
-  const uniqueTimeEntries = {};
+  const uniqueTimeEntries: UniqueTimeEntries = {};
 
   // Initialize an empty array to store the filtered schedule
   const filteredSchedule = [];
@@ -28,12 +33,9 @@ export const filteredDuplicateTime = (schedule: ScheduleT) => {
   // Add filler data to maintain the length of 12
   const fillerCount = 12 - filteredSchedule.length;
   for (let i = 0; i < fillerCount; i++) {
-    const fillerData = {
+    const fillerData: ScheduleItemT = {
+      ...filteredSchedule[filteredSchedule.length],
       id: filteredSchedule.length + i + 1,
-      enable: false,
-      startHour: 0,
-      startMin: 0,
-      temp: 8,
     };
     filteredSchedule.push(fillerData);
   }

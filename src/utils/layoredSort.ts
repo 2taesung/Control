@@ -1,10 +1,14 @@
-type SortParam<T> = {
+interface Enable {
+  enable: boolean;
+}
+
+type SortParam<T extends Enable> = {
   targetArr: Array<T>;
   keyArr: Array<keyof T>;
 };
 
 /** keyArr의 인덱스 순서대로 우선순위 정렬 */
-export const layoredSort = <T>({
+export const layoredSort = <T extends Enable>({
   targetArr,
   keyArr,
 }: SortParam<T>): Array<T> => {

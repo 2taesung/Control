@@ -27,5 +27,5 @@ export const addSchedule = async ({
     schedule: schedule,
   };
 
-  await postScheduleData({ app, newData });
+  await postScheduleData({ app, data: newData });
 };

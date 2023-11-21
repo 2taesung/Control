@@ -1,3 +1,4 @@
+import { Sites } from './site';
 import { WsParamsWithoutApp } from './wsParams';
 
 export type ScheduleItemT = {
@@ -32,4 +33,12 @@ export type ScheduleDataT = {
 export type resScheduleT = WsParamsWithoutApp & {
   type: string;
   data: { [key: string]: ScheduleDataT };
+};
+
+export type PostScheduleDataParamDataT = {
+  target: string[];
+  site: Sites;
+  sector: string;
+  scheduleLength: number;
+  schedule: ScheduleT;
 };
