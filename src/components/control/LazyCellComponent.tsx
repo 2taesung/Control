@@ -27,17 +27,17 @@ const LazyCellComponent = (props: LazyCellComponentProps) => {
   switch (app) {
     case 'uc': {
       const ucValues = values as AppToValues['uc'];
-      if (!ucValues.temp) return null;
+      if (ucValues.temp === undefined) return null;
       return renderTempCell(ucValues.temp);
     }
     case 'hum': {
       const humValues = values as AppToValues['hum'];
-      if (!humValues.hum) return null;
+      if (humValues.hum === undefined) return null;
       return renderHumCell(humValues.hum);
     }
     case 'ef': {
       const efValues = values as AppToValues['ef'];
-      if (!efValues.onOff) return null;
+      if (efValues.onOff === undefined) return null;
       return renderOnOffCell(efValues.onOff);
     }
     default:
